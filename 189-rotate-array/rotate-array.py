@@ -1,6 +1,5 @@
 class Solution(object):
     def rotate(self, nums, k):
-        j=0
         new_nums=[0] * len(nums)
         n=len(nums)
         for i in range(n):
