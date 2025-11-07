@@ -5,8 +5,9 @@ class Solution(object):
         :rtype: int
         """
         n=len(nums)
+        nums_set=set(nums)
         for j in range(n+1):
-            if (j not in nums):
+            if (j not in nums_set):
                 return j
         
             
