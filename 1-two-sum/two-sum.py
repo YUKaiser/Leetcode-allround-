@@ -1,12 +1,13 @@
 class Solution(object):
     def twoSum(self, nums, target):
+        ind=[]
         for i in range(len(nums)):
             for j in range(i+1,len(nums)):
                 if(nums[i]+nums[j]==target):
-                    del nums[:]
-                    nums.append(i)
-                    nums.append(j)
-                    return nums
+                    ind.append(i)
+                    ind.append(j)
+                    return ind
+                    break
                     
        
         
