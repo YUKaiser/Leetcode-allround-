@@ -7,6 +7,6 @@ class Solution(object):
                     ind.append(i)
                     ind.append(j)
                     return ind
-                    break
+                    
        
         
