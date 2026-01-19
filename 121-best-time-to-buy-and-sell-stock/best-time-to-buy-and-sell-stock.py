@@ -5,8 +5,7 @@ class Solution(object):
         min_cost=float('inf')
         for i in range(n):
             min_cost=min(min_cost,prices[i])
-            if min_cost<=prices[i]:
-                maxprofit=max(maxprofit,prices[i]-min_cost)
+            maxprofit=max(maxprofit,prices[i]-min_cost)
             
         return maxprofit
         """
