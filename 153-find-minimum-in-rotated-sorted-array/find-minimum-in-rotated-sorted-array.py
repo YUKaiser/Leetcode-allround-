@@ -1,6 +1,7 @@
 class Solution(object):
     def findMin(self, nums):
-        return min(nums)
+        nums.sort()
+        return nums[0]
         """
         :type nums: List[int]
         :rtype: int
