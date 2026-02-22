@@ -1,17 +1,21 @@
 class Solution(object):
     def singleNonDuplicate(self, nums):
-        n=len(nums) 
+        n=len(nums)
+        low=0
+        high=n-1
         if(n>1):
 
-            if(nums[0]!=nums[1]):
-                return nums[0]
-           
-            for i in range(1,n-1):
-                if(nums[i]!=nums[i-1] and nums[i]!=nums[i+1]):
-                    return nums[i]
-            if(nums[n-1]!=nums[n-1-1]):
-                return nums[n-1]
-        return nums[0]
+            while low<=high:
+                if(nums[low]!=nums[low+1]):
+                    return nums[low]
+                elif(nums[high]!=nums[high-1]):
+                    return nums[high]
+                else:
+                    low=low+2
+                    high=high-2
+        
+        else:
+            return nums[0]     
         """
         :type nums: List[int]
         :rtype: int
