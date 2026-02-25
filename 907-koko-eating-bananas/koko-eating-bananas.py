@@ -7,20 +7,17 @@ class Solution(object):
 
             mid=(low+high)//2
             total_hour=0
-            
+            for pile in piles:
+                total_hour=(pile+mid-1)//mid+total_hour
         
-            if(self.calculatehour(piles,mid)<=h):
+            if(total_hour<=h):
                 ans=mid
                 high=mid-1
             else:
                 low=mid+1
                
         return ans
-    def calculatehour(self,piles,k):
-        total_hour=0
-        for pile in piles:
-            total_hour=(pile+k-1)//k+total_hour
-        return total_hour
+ 
         """ 
         :type piles: List[int]
         :type h: int
