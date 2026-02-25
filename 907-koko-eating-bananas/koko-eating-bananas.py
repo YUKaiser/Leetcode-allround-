@@ -7,8 +7,7 @@ class Solution(object):
 
             mid=(low+high)//2
             total_hour=0
-            for pile in piles:
-                total_hour=math.ceil(pile/mid)+total_hour
+            
         
             if(self.calculatehour(piles,mid)<=h):
                 ans=mid
