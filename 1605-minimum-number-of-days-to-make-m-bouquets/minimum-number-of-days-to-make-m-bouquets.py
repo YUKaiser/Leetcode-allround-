@@ -5,7 +5,7 @@ class Solution(object):
         result_day=-1
         while min_day<=max_day:
             mid=(min_day+max_day)//2
-            if(self.checkbloom(mid,bloomDay,m,k)>=m):
+            if(self.checkbloom(mid,bloomDay,m,k)):
                 result_day=mid
                 max_day=mid-1
             else:
@@ -18,14 +18,16 @@ class Solution(object):
            
             if day<=mid:
                 count=count+1
+                if count==k:
+                    t_bq=t_bq+1
+                    count=0
             else:
                 count=0
-            if(count==k):
-                t_bq=t_bq+1
-                count=0
-        return t_bq
-                        
-
+              
+            if t_bq >= m:
+                return True
+        return False
+                   
 
         
       
