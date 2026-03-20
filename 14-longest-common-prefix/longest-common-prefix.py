@@ -9,8 +9,8 @@ class Solution(object):
                 if s1[j]==s2[j]:
                     prf=prf+s1[j]
                 else:
-                    break
-            initial_val=prf
+                    break    # stop when mismatch occurs
+            initial_val=prf   # Update prefix for next iteration
         return initial_val
         """
         :type strs: List[str]
