@@ -1,19 +1,14 @@
-class Solution(object):
+class Solution:
     def longestCommonPrefix(self, strs):
-        initial_val=strs[0]
-        for i in range(len(strs)-1):
-            s1=initial_val
-            s2=strs[i+1]
-            prf=""
-            for j in range(min(len(s1),len(s2))):
-                if s1[j]==s2[j]:
-                    prf=prf+s1[j]
-                else:
-                    break    # stop when mismatch occurs
-            initial_val=prf   # Update prefix for next iteration
-        return initial_val
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
+        if len(strs) == 0:
+            return ""
+        result = ""
+        base = strs[0]
+        for i in range(len(base)):
+            for word in strs[1:]:
+                if i == len(word) or word[i] != base[i]:
+                    return result
+            result += base[i]
+        return result
+        
         
