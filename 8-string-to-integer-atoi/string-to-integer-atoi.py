@@ -25,7 +25,7 @@ class Solution(object):
         # Convert to int and handle the 32-bit limits
         res = int(a)
         
-        if res > 2147483647: return 2147483647
-        if res < -2147483648: return -2147483648
+        if res > 2**31-1: return 2**31 -1
+        if res < -2**31: return -2**31
         
         return res
