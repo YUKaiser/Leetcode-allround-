@@ -1,3 +1,6 @@
-seLECT ROUND(COUNT(DISTINCT b.player_id)/COUNT(DISTINCT a.player_id),2) AS fraction FROM 
-(SELECT player_id, MIN(event_date) AS event_date FROM Activity
-GROUP BY player_id) a LEFT JOIN Activity b ON a.player_id = b.player_id AND DATEDIFF(b.event_date, a.event_date) = 1
+select round(count(b.player_id)/count(a.player_id),2) as fraction
+from 
+(select player_id,Min(event_date) as first_login_date from activity group by player_id)
+ as a left join
+activity as b on b.player_id=a.player_id
+and Datediff(b.event_date,a.first_login_date)=1
