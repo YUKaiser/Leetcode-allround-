@@ -1,26 +1,17 @@
 class Solution(object):
     def groupAnagrams(self, strs):
-        main_list = []
-        set_a = set()
+        # Using a dictionary to group by the sorted string (the 'key')
+        groups = {}
         
-        for i in range(len(strs)):
-            if i in set_a:
-                continue
-                
-            inter_list = []
-            # Pre-sort the "anchor" word once
-            sorted_i = sorted(strs[i])
+        for s in strs:
+            # 1. Sort the string to create a universal key for all its anagrams
+            # e.g., "stop", "pots", and "tops" all become "opst"
+            key = "".join(sorted(s))
             
-            for j in range(i, len(strs)):
-                if j in set_a:
-                    continue
-                
-                # Compare sorted characters instead of rotations
-                if len(strs[i]) == len(strs[j]) and sorted_i == sorted(strs[j]):
-                    inter_list.append(strs[j])
-                    set_a.add(j)
-                    
-            if inter_list:
-                main_list.append(inter_list)
-
-        return main_list
+            # 2. Add the original string to its corresponding group
+            if key not in groups:
+                groups[key] = []
+            groups[key].append(s)
+            
+        # 3. Return all the grouped lists
+        return list(groups.values())
