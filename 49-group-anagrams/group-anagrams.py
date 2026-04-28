@@ -6,7 +6,7 @@ class Solution(object):
         for s in strs:
             # 1. Sort the string to create a universal key for all its anagrams
             # e.g., "stop", "pots", and "tops" all become "opst"
-            key =str(sorted(s))
+            key ="".join(sorted(s))
             
             # 2. Add the original string to its corresponding group
             if key not in groups:
