@@ -1,10 +1,9 @@
-# Write your MySQL
 
-with Con_num as(
+
+select distinct num as ConsecutiveNums from (
      select num,
      lag(num) over (order by id) as prev,
      lead(num) over (order by id) as next
-     from Logs
-)
-select distinct num as ConsecutiveNums from Con_num
-where (prev-num)=0 and (next-num)=0
+     from Logs 
+) as p
+where (prev=num) and num=next
