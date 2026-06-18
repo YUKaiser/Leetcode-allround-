@@ -11,10 +11,10 @@ class Solution(object):
         :rtype: ListNode
         """
         curr=head
-        dic={}
+        s_s=set()
         while curr is not None and curr.next is not None:
-            if curr in dic:
+            if curr in s_s:
                 return curr
-            dic[curr]=dic.get(curr.val)
+            s_s.add(curr)
             curr=curr.next
         return None
