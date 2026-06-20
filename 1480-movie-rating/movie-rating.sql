@@ -9,7 +9,7 @@ order by Count(*) Desc,u.name
   (select m.title as results  from Movies as m join
    MovieRating as mr on m.movie_id=mr.movie_id
    where mr.created_at between "2020-02-01" and "2020-02-29"
-   group by mr.movie_id,m.title
+   group by m.movie_id,m.title
    order by AVG(mr.rating) Desc,m.title
    limit 1
    )
