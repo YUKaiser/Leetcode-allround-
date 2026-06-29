@@ -10,24 +10,19 @@ class Solution(object):
         :type n: int
         :rtype: Optional[ListNode]
         """
-        count=0
-        curr=head
-        while curr is not None:
-            count+=1
-            curr=curr.next
-        
-        if count==n:
-            return head.next
-        
-        curr=head
-        prev=None
+        slow=head
+        fast=head
         a=0
-        while curr is not None:
+        while a<n:
             a+=1
-            if a==(count-n)+1:
-                prev.next=curr.next
-                break
-            prev=curr
-            curr=curr.next
-            
+            fast=fast.next
+        
+        if fast is None:
+            return head.next
+        while fast.next is not None:
+
+            fast=fast.next
+            slow=slow.next
+        slow.next=slow.next.next
         return head
+        
