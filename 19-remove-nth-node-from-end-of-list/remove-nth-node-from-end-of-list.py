@@ -12,9 +12,7 @@ class Solution(object):
         """
         slow=head
         fast=head
-        a=0
-        while a<n:
-            a+=1
+        for _ in range(n):
             fast=fast.next
         
         if fast is None:
