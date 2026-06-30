@@ -10,18 +10,33 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        if headA is None or headB is None:
-            return None
+        countA=0
+        countB=0
         currA=headA
-        set_=set()
         while currA is not None:
-            set_.add(currA)
+            countA+=1
             currA=currA.next
         currB=headB
         while currB is not None:
-            if currB in set_:
-                return currB
+            countB+=1
             currB=currB.next
         
+        currA=headA
+        currB=headB
+
+        if countA>countB:
+            a=0
+            while a<(countA-countB):
+                currA=currA.next
+                a+=1
+        else:
+            a=0
+            while a <(countB-countA):
+                currB=currB.next
+                a+=1
+        while currA is not None and currB is not None:
+            if currA==currB:
+                return currA
+            currA=currA.next
+            currB=currB.next
         return None
-        
