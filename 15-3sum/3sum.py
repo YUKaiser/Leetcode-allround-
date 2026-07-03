@@ -18,4 +18,4 @@ class Solution(object):
                     b=[nums[i],nums[j],a]
                     b.sort()
                     res.add(tuple(b))
-        return list(res)
+        return [list(x) for x  in res]
