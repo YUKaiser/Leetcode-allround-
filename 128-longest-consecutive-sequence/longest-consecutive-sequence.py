@@ -14,7 +14,4 @@ class Solution(object):
                 max_count = max(max_count, current)
             else:
                 current = 1
-        
         return max_count
-       
-        
