@@ -37,7 +37,7 @@ class MinStack(object):
         """
         if len(self.items)!=0:
             return self.items[-1][1]
-
+        return 0
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
