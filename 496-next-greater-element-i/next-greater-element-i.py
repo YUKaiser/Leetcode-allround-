@@ -6,14 +6,17 @@ class Solution(object):
         :rtype: List[int]
         """
         stk=[]
-        final=[-1]*len(nums1)
+        dicta={}
         for i in range(len(nums2)-1,-1,-1):
             while stk and nums2[i]>stk[-1]:
                 stk.pop()
-            if nums2[i] in nums1:
-                if stk:
-                    final[nums1.index(nums2[i])]=stk[-1]
-                else:
-                    final[nums1.index(nums2[i])]=-1
+            if stk:
+                dicta[nums2[i]]=stk[-1]
+            else:
+                dicta[nums2[i]]=-1
             stk.append(nums2[i])
+
+        final=[]
+        for num in nums1:
+            final.append(dicta[num])
         return final
