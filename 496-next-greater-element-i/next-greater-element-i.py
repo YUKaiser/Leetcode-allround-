@@ -5,15 +5,15 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
+        stk=[]
         final=[-1]*len(nums1)
-        for i in range(len(nums1)):
-            if nums1[i] in nums2:
-
-                a=nums2.index(nums1[i])
-
-                for j in range(a,len(nums2)):
-                    if nums1[i]<nums2[j]:
-                        final[i]=nums2[j]
-                        break
-            
+        for i in range(len(nums2)-1,-1,-1):
+            while stk and nums2[i]>stk[-1]:
+                stk.pop()
+            if nums2[i] in nums1:
+                if stk:
+                    final[nums1.index(nums2[i])]=stk[-1]
+                else:
+                    final[nums1.index(nums2[i])]=-1
+            stk.append(nums2[i])
         return final
