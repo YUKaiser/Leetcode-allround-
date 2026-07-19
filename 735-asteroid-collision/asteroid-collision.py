@@ -1,34 +1,25 @@
 class Solution(object):
     def asteroidCollision(self, asteroids):
-        stk = []
+        """
+        :type asteroids: List[int]
+        :rtype: List[int]
+        """
+        stk=[]
+        n=len(asteroids)
+        stk.append(asteroids[0])
+        for i in range(1,n):
+            alive=True
+            while stk and asteroids[i]<0 and stk[-1]>0:
+                if abs(asteroids[i])==stk[-1]:
+                    stk.pop()
+                    alive=False
+                    break
+                elif abs(asteroids[i])>stk[-1]:
+                    stk.pop()
+                else:
+                    alive=False
+                    break
+            if alive:
 
-        for asteroid in asteroids:
-            if stk and asteroid < 0 and stk[-1] > 0:
-                self.check(asteroid, stk)
-            else:
-                stk.append(asteroid)
-
+                stk.append(asteroids[i])
         return stk
-
-    def check(self, out, stk):
-
-        if not stk:
-            stk.append(out)
-            return
-
-        top = stk.pop()
-
-        if top < 0:
-            stk.append(top)
-            stk.append(out)
-            return
-
-        if abs(out) > top:
-            self.check(out, stk)
-
-        elif abs(out) == top:
-            return
-
-        else:
-            stk.append(top)
-            return
