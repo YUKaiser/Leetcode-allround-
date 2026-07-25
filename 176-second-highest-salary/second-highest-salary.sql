@@ -1,4 +1,8 @@
 # Write your MySQL query statement below
-select IFNUll((select distinct salary from employee where salary <(select Max(salary) from employee )
-order by salary desc limit 1),NULL) as SecondHighestSalary 
+SELECT (
+    SELECT DISTINCT salary
+    FROM Employee
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET 1
+) AS SecondHighestSalary;
 
