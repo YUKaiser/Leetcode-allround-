@@ -5,11 +5,15 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        dicta={}
-        for i in range(len(arr)):
-            if arr[i] in dicta:
-                if abs(dicta[arr[i]]-i)<=k:
-                    return True
-                
-            dicta[arr[i]]=i
+        i=0
+        seta=set()
+        j=0
+        while j<len(arr):
+            if j-i>k:
+                seta.remove(arr[i])
+                i+=1
+            if arr[j] in seta:
+                return True
+            seta.add(arr[j])
+            j+=1
         return False
