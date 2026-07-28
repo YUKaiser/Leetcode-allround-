@@ -5,13 +5,12 @@ class Solution(object):
         :rtype: int
         """
         i=0
-        record=set()
         length=float('-inf')
         dicta={}
         if not s:
             return 0
         for j in range(len(s)):
-            if s[j] in s[i:j]:
+            if s[j] in dicta and dicta[s[j]]>=i:
                 i=dicta[s[j]]+1
                  
             dicta[s[j]]=j
