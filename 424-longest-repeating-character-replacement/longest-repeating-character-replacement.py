@@ -5,21 +5,16 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        ans = 0
-
-        for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-            i = 0
-            diff = 0
-
-            for j in range(len(s)):
-                if s[j] != ch:
-                    diff += 1
-
-                while diff > k:
-                    if s[i] != ch:
-                        diff -= 1
-                    i += 1
-
-                ans = max(ans, j - i + 1)
-
-        return ans  
+        max_fre=0
+        res_max=0
+        i=0
+        dicta={}
+        for j in range(len(s)):
+            dicta[s[j]]=dicta.get(s[j],0)+1
+            max_fre=max(dicta[s[j]],max_fre)
+            while (j-i+1)-max_fre >k:
+                dicta[s[i]]=dicta.get(s[i])-1
+                max_fre=max(max_fre,dicta[s[i]])
+                i+=1
+            res_max=max(j-i+1,res_max)
+        return res_max
