@@ -5,15 +5,13 @@ class Solution(object):
         :type goal: int
         :rtype: int
         """
-        count = 0
-        sums = 0
-        d = dict()
-        d[0] = 1
-        
-        for i in range(len(nums)):
-            sums += nums[i]
-            count += d.get(sums-goal,0)
-            d[sums] = d.get(sums,0) + 1
-        
-        return(count)
-       
+        sums=0
+        res=0
+        dicta={}
+        dicta[0]=1
+        for i  in range(len(nums)):
+            sums+=nums[i]
+            if (sums-goal) in dicta:
+                res+=dicta.get(sums-goal)
+            dicta[sums]=dicta.get(sums,0)+1
+        return res
