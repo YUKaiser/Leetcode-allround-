@@ -4,14 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-
-        if len(nums) == 1:
-            return True
-
-        store = len(nums) - 1
-
-        for i in range(len(nums) - 2, -1, -1):
-            if i + nums[i] >= store:
-                store = i
-
-        return store == 0
+        max_J=0
+        for i in range(len(nums)):
+            max_J=max(max_J,i+nums[i])
+            if max_J==len(nums)-1:
+                break
+            if i==max_J:
+                return False
+        return True
