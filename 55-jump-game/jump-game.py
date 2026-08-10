@@ -6,9 +6,7 @@ class Solution(object):
         """
         max_J=0
         for i in range(len(nums)):
-            max_J=max(max_J,i+nums[i])
-            if max_J==len(nums)-1:
-                break
-            if i==max_J:
+            if i>max_J:
                 return False
+            max_J=max(max_J,i+nums[i])
         return True
