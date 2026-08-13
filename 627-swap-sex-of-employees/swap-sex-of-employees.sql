@@ -1,7 +1,3 @@
-# Write your MySQL query statement below
-update salary 
-set sex=
- case sex
- when "f" then "m"
- else "f"
- end 
+# Write your MySQL query statement belowselect 
+update salary
+ set sex =if(sex='m','f','m');
