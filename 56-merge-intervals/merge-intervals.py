@@ -14,10 +14,8 @@ class Solution(object):
             else:
                 res.append(newInterval)
                 newInterval=intervals[i]
-        if newInterval not in res:
-            res.append(newInterval) 
-            res.sort()
-            return res
-        else:
-            return res
+        
+        res.append(newInterval) 
+        return res
+        
                 
