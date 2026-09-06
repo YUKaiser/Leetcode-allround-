@@ -12,6 +12,7 @@ class Solution(object):
         d=len(nums)
         right=sum(num1[c:d])
         
+        
         cnt=0
         while d<len(num1):
             if left>right:
