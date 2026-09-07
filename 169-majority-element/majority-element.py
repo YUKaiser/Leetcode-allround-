@@ -4,11 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        nums.sort()
+        s=set(nums)
         maxi=0
-        dicta={}
-        for i in range(len(nums)):
-            dicta[nums[i]]=dicta.get(nums[i],0)+1
-            if maxi<dicta[nums[i]]:
-                maxi=dicta[nums[i]]
-                a=nums[i]
+        for num in s:
+            if nums.count(num)>maxi:
+                maxi=nums.count(num)
+                a=num
         return a
