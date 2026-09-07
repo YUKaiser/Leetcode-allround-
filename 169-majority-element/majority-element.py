@@ -1,8 +1,14 @@
 class Solution(object):
     def majorityElement(self, nums):
-        d={}
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxi=0
+        dicta={}
         for i in range(len(nums)):
-            d[nums[i]]=d.get(nums[i],0)+1
-        max_key = max(d, key=d.get)
-        return max_key
-        
+            dicta[nums[i]]=dicta.get(nums[i],0)+1
+            if maxi<dicta[nums[i]]:
+                maxi=dicta[nums[i]]
+                a=nums[i]
+        return a
