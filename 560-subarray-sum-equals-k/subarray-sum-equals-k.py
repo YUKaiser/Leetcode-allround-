@@ -6,14 +6,16 @@ class Solution(object):
         :rtype: int
         """
         dicta={}
-        sumi=0
-        result=0
-        dicta[0]=1
+        pref_sum=[]
+        s=0
         for i in range(len(nums)):
-            sumi+=nums[i]
-            
-            if (sumi-k) in dicta:
-                result+=dicta.get(sumi-k)
-                
-            dicta[sumi]=dicta.get(sumi,0)+1
-        return result
+            s+=nums[i]
+            pref_sum.append(s)
+        cnt=0
+        for j in range(len(pref_sum)):
+            if pref_sum[j]-k in dicta:
+                cnt+=dicta.get(pref_sum[j]-k)
+            if pref_sum[j]==k:
+                cnt+=1
+            dicta[pref_sum[j]]=dicta.get(pref_sum[j],0)+1
+        return cnt
