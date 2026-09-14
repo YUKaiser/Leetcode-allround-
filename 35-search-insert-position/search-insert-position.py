@@ -1,24 +1,24 @@
 class Solution(object):
     def searchInsert(self, nums, target):
-        n=len(nums)
-        low=0
-        high=(n-1)
-        ind=0
-        
-        while (low<=high):
-            mid=(low+high)//2
-            if(nums[mid]>=target):
-                ind=mid
-                high=mid-1
-            else:
-                low=mid+1
-                ind=low
-        return ind
-                
-            
         """
         :type nums: List[int]
         :type target: int
         :rtype: int
         """
+        low=0
+        n=len(nums)
+        high=n-1
+        while low<=high:
+            mid=(low+high)/2
+            if target==nums[mid]:
+                return mid
+            elif target<nums[mid]:
+                high=mid-1
+            else:
+                low=mid+1
+        if target>nums[mid]:
+            return mid+1
+        else:
+            return mid
+
         
