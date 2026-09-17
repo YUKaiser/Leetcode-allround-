@@ -7,7 +7,6 @@ class Solution(object):
         low=0
         n=len(nums)
         high=n-1
-        mini=float('inf')
         while low<high:
             mid=(low+high)//2
             if nums[high]<nums[mid]:
