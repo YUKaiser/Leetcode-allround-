@@ -1,20 +1,22 @@
-class Solution(object):
-    def smallestDivisor(self, nums, threshold): 
+class Solution:
+    def smallestDivisor(self, nums: list[int], threshold: int) -> int:
+        if len(nums)==threshold:
+            return max(nums)
         low=1
         high=max(nums)
-        result=high
+        mini=float('inf')
         while low<=high:
             mid=(low+high)//2
-            a=self.sum_a(nums,mid)
-            if a<=threshold:
-                result=mid
+            a=self.sumNums(nums,mid)
+            if a <=threshold:
+                mini=min(mid,mini)
                 high=mid-1
             else:
                 low=mid+1
-        return result
-    def sum_a(self,nums,mid):
-         return sum(math.ceil(float(x )/ mid) for x in nums)# see here we write float becausw it is py2 version
-
-
-        
+        return mini
+    def sumNums(self,nums,mid):
+        res=0
+        for num in nums:
+            res+=math.ceil(num/mid)
+        return res
         
