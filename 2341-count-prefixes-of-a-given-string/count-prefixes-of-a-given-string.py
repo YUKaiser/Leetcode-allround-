@@ -5,7 +5,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        res=[]
+    
         cnt=0
         for i in range(len(s)):
             
