@@ -1,14 +1,15 @@
 class Solution(object):
     def maxDepth(self, s):
-        count=0
-        re=0
+        """
+        :type s: str
+        :rtype: int
+        """
+        maxi=0
+        cnt=0
         for cr in s:
             if cr=="(":
-                count +=1
-                re=max(re,count)
-            elif cr==")":
-                count =count-1
-
-        return re
-
-       
+                cnt+=1
+            if cr==")":
+                cnt-=1
+            maxi=max(cnt,maxi)
+        return maxi
