@@ -1,31 +1,42 @@
+
 class Solution(object):
     def myAtoi(self, s):
-        a = ""
-        # 1. We need to handle leading whitespace first so it doesn't 
-        # interfere with our sign/digit logic inside the loop.
-        s = s.lstrip() 
-        
-        for i in range(len(s)):
-            # Check for digits
-            if s[i].isdigit():
-                a = a + s[i]
-            
-            # Check for sign (only if it's the very first character)
-            elif s[i] in ["-", "+"] and i == 0:
-                a = a + s[i]
-            
-            # If we hit anything else (space, letter, or a second sign), we STOP.
-            else:
-                break 
+        lis = ['0','1','2','3','4','5','6','7','8','9','-','+']
+        a = 1
+        res = ""
+        ab = s.strip()
 
-        # Final checks before returning
-        if a == "" or a == "-" or a == "+":
+        if len(ab) == 0:
             return 0
-            
-        # Convert to int and handle the 32-bit limits
-        res = int(a)
-        
-        if res > 2**31-1: return 2**31 -1
-        if res < -2**31: return -2**31
-        
-        return res
+
+        if ab[0] == '-':
+            a = -1
+
+        for i in range(len(ab)):
+            if ab[i] in lis:
+
+                if ab[i] == '-' or ab[i] == '+':
+                    if i != 0:
+                        break
+                    else:
+                        continue
+
+                res += ab[i]
+            else:
+                break
+
+        if len(res) == 0:
+            return 0
+
+        num = 0
+        for ch in res:
+            num = num * 10 + (ord(ch) - ord('0'))
+
+        num = a * num
+
+        if num > 2**31 - 1:
+            return 2**31 - 1
+        if num < -(2**31):
+            return -(2**31)
+
+        return num
