@@ -1,23 +1,24 @@
 class Solution(object):
     def partitionLabels(self, s):
-
+        """
+        :type s: str
+        :rtype: List[int]
+        """
         dicta={}
         for i in range(len(s)-1,-1,-1):
             if s[i] not in dicta:
                 dicta[s[i]]=i
-        curr_len=0
-        right=0
-        lis=[]
-        for i in range(len(s)):
-            right=max(right,dicta[s[i]])
-            curr_len +=1
-            if i==right:
-                lis.append(curr_len)
-                curr_len=0
-        return lis
-
-
-
-        
-    
-        
+            else:
+                continue
+        i=0
+        end=dicta[s[0]]
+        res=[]
+        for j in range(len(s)):
+            if j==end:
+                res.append(j-i+1)
+                i=j+1
+                if i <len(s):
+                    end=dicta[s[i]]
+            if dicta[s[j]]>end:
+                end=dicta[s[j]]
+        return res    
