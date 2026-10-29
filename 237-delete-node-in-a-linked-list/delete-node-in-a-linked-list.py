@@ -7,13 +7,7 @@
 class Solution(object):
     def deleteNode(self, node):
         
-        prev=None
-        curr=node
-        while curr.next is not None:
-            prev=curr
-            curr=curr.next
-            prev.val=curr.val
-        prev.next=None
-
+        node.val=node.next.val
+        node.next=node.next.next
         
         
