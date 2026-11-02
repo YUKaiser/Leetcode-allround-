@@ -10,50 +10,35 @@ class Solution(object):
         :type l2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        curr1=l1
-        curr2=l2
-        carry=0
-        count1=0
-        count2=0
-        while curr1 is not None:
-            count1+=1
-            curr1=curr1.next
-        while curr2 is not None:
-            count2+=1
-            curr2=curr2.next
-        curr1=l1
-        curr2=l2
-        if count1>=count2:
-            a=curr1
-            b=curr2     
-        else:
-            a=curr2
-            b=curr1
-        head=a
-        while a is not None and b is not None:
-            a.val+=b.val+carry
-            if a.val >=10:
-                carry=1
-                a.val=a.val-10
-            else:
-                carry=0
-            prev=a
-            a=a.next
-            b=b.next
-
-        while carry!=0 and a is not None:
-            a.val+=carry
-            if a.val==10:
-                carry=1
-                a.val=0
-            else:
-                carry=0
-            prev=a
-            a=a.next
+        elem1=[]
+        elem2=[]
+        first=l1
+        second=l2
+        cnt1=0
+        cnt2=0
+        while first is not None:
+            cnt1+=1
+            elem1.append(str(first.val))
+            first=first.next
+        while second is not None:
+            cnt2+=1
+            elem2.append(str(second.val))
+            second=second.next
+        elem1.reverse()
+        elem2.reverse()
+        a="".join(elem1)
+        b="".join(elem2)
+        c=int(a)+int(b)
+        if c==0:
+            return ListNode(0)
+        res=[]
+        while c>0:
+            res.append(c%10)
+            c=c//10
         
-        if carry!=0:
-            prev.next=ListNode(1)
-
-    
-
+        head=ListNode(res[0])
+        curr=head
+        for element in res[1:]:
+            curr.next=ListNode(element)
+            curr=curr.next
         return head
