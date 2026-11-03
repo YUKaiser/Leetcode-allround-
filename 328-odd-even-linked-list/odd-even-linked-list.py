@@ -29,5 +29,5 @@ class Solution(object):
             curr2.val=seq[c]
             c+=1
             curr2=curr2.next
-        curr1=head
+        
         return head
