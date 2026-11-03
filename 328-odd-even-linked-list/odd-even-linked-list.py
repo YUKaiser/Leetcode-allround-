@@ -9,25 +9,16 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        curr=head
-        lis=[]
-        while curr is not None:
-            lis.append(curr.val)
-            curr=curr.next
-        seq=[]
-        a=0
-        while a<len(lis):
-            seq.append(lis[a])
-            a+=2
-        b=1
-        while b<len(lis):
-            seq.append(lis[b])
-            b+=2
-        c=0
-        curr2=head
-        while curr2 is not None:
-            curr2.val=seq[c]
-            c+=1
-            curr2=curr2.next
-        
+        if head is not None:
+
+            odd=head
+            even=odd.next
+            connect=even
+            while odd is not None and even is not None and even.next is not None:
+                odd.next=even.next
+                odd=odd.next
+                even.next=odd.next
+                even=even.next
+            odd.next=connect
         return head
+        
