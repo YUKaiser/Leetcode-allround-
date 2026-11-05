@@ -9,16 +9,13 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        res=[]
-        curr=head
-        while curr is not None:
-            res.append(curr.val)
-            curr=curr.next
-        a=res[::-1]
-        curr1=head
-        k=0
-        while curr1 is not None:
-            curr1.val=a[k]
-            k+=1
-            curr1=curr1.next
-        return head
+        a=None
+        b=head
+        while b is not None:
+            vara=b
+            varb=b.next
+            b.next=a
+            a=vara
+            b=varb
+        head=b
+        return a
