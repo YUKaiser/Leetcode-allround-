@@ -17,5 +17,4 @@ class Solution(object):
             b.next=a
             a=vara
             b=varb
-        head=b
         return a
