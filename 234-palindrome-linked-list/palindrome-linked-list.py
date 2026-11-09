@@ -14,7 +14,12 @@ class Solution(object):
         while curr is not None:
             rs.append(curr.val)
             curr=curr.next
-        if rs==rs[::-1]:
-            return True
-        return False
+        a=0
+        b=len(rs)-1
+        while a<b:
+            if rs[a]!=rs[b]:
+                return False
+            a+=1
+            b-=1
+        return True
         
