@@ -9,14 +9,12 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: bool
         """
-        arr=[]
+        rs=[]
         curr=head
         while curr is not None:
-            arr.append(curr.val)
+            rs.append(curr.val)
             curr=curr.next
-
-        if arr[::-1]==arr:
+        if rs==rs[::-1]:
             return True
         return False
-          
         
