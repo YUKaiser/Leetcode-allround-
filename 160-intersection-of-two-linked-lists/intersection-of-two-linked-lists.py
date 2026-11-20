@@ -10,33 +10,30 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        countA=0
-        countB=0
-        currA=headA
-        while currA is not None:
-            countA+=1
-            currA=currA.next
-        currB=headB
-        while currB is not None:
-            countB+=1
-            currB=currB.next
-        
-        currA=headA
-        currB=headB
+        curr1=headA
+        curr2=headB
+        cnt1=0
+        cnt2=0
+        while curr1 is not None:
+            cnt1+=1
+            curr1=curr1.next
+        while curr2 is not None:
+            cnt2+=1
+            curr2=curr2.next
+        if cnt1>cnt2:
+            larger=headA
+            smaller=headB
 
-        if countA>countB:
-            a=0
-            while a<(countA-countB):
-                currA=currA.next
-                a+=1
         else:
-            a=0
-            while a <(countB-countA):
-                currB=currB.next
-                a+=1
-        while currA is not None and currB is not None:
-            if currA==currB:
-                return currA
-            currA=currA.next
-            currB=currB.next
+            larger=headB
+            smaller=headA
+        skip=abs(cnt1-cnt2)
+        for i in range(skip):
+            larger=larger.next
+        while larger and smaller is not None:
+            if larger==smaller:
+                return larger
+            larger=larger.next
+            smaller=smaller.next
         return None
+        
