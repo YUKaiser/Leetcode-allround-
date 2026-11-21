@@ -10,11 +10,14 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        slow=fast=head
+        if head is None:
+            return False
+        fast=head
+        slow=head
         while fast is not None and fast.next is not None:
-            slow=slow.next
             fast=fast.next.next
-            if slow==fast:
+            slow=slow.next
+            if fast==slow:
                 return True
-        
         return False
+        
