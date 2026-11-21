@@ -10,12 +10,18 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        dicta={}
-        curr=head
-        while curr is not None:
-            if curr in dicta.values():
-                return curr
-            dicta[curr]=curr
-            curr=curr.next
+        slow=head
+        fast=head
+        while fast is not None and fast.next is not None:
+            fast=fast.next.next
+            slow=slow.next
+            if  fast==slow:
+                break
+        slow=head
+        while fast is not None and fast.next is not None:
+            if slow==fast:
+                return slow
+            fast=fast.next
+            slow=slow.next
         return None
         
