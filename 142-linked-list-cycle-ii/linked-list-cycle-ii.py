@@ -10,11 +10,12 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        dicta={}
         curr=head
-        s_s=set()
-        while curr is not None and curr.next is not None:
-            if curr in s_s:
+        while curr is not None:
+            if curr in dicta.values():
                 return curr
-            s_s.add(curr)
+            dicta[curr]=curr
             curr=curr.next
         return None
+        
